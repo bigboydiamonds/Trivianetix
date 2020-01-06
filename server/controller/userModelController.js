@@ -9,22 +9,10 @@ userModelController.createUser = (req, res, next) => {
     const { username, password, age, state, education } = req.body;
     console.log('req.body: ', req.body);
     const text = `
-<<<<<<< HEAD
-<<<<<<< HEAD
-            INSERT INTO users (username, password, age, state, education) 
-            values($1, $2, $3, $4, $5)
-=======
-            INSERT INTO users (username, password, age)
-            values($1, $2, $3)
->>>>>>> a531bbe0034e7a14e5f4f077d5bd52ea5c6267f1
-        `
-    const values = [username, password, age, state, education];
-=======
             INSERT INTO users (username, password, age, state, education, games_played, correct_answers) 
             values($1, $2, $3, $4, $5, $6, $7)
         `
     const values = [username, password, age, state, education, 0, 0];
->>>>>>> 8502f2388ab2a0a71efe5ff58b6c3d57ed9aec47
 
     db.query(text, values)
         .then(response => console.log(response))
@@ -36,11 +24,7 @@ userModelController.createUser = (req, res, next) => {
 //used for login verification
 userModelController.findUser = (req, res, next) => {
     const { username, password } = req.body;
-<<<<<<< HEAD
     // console.log('req.body: ', req.body);
-=======
-    console.log('req.body: ', req.body);
->>>>>>> 8502f2388ab2a0a71efe5ff58b6c3d57ed9aec47
     const text = `
             SELECT username
             FROM users
